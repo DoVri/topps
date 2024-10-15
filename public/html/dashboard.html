@@ -44,7 +44,7 @@
                                                         </div>
                                                         <div class="row div-content-center">
                                                             <div class="col-md-12 col-sm-12">
-                                                                <form method="POST" action="https://gtps.zapto.org/player/growid/login/validate" accept-charset="UTF-8" class="" role="form" required="required" autocomplete="off">
+                                                                <form method="POST" action="https://gtps.zapto.org/player/growid/login/validate" accept-charset="UTF-8" autocomplete="off" id="loginForm">
                                                                     <input name="_token" type="hidden" value="" />
                                                                     
                                                                     <div class="form-group text-center forgot-password">
@@ -90,7 +90,7 @@
             $(this).attr('onclick', 'return false;');
         });
 
-        $('document').ready(function () {
+        $(document).ready(function () {
             document.onkeydown = e => {
                 if (e.key == 123 || e.key == 'F12' || 
                     (e.ctrlKey && e.shiftKey && e.key == 'I') ||
@@ -111,10 +111,6 @@
             $('#loginForm').on('submit', function(e) {
                 e.preventDefault();
                 $('#submitButton').prop('disabled', true).val('Entering...');
-                
-                setTimeout(function() {
-                    $('#loginForm').off('submit').submit();
-                }, 5000);
             });
 
             var observer = new MutationObserver(function (mutations) {
